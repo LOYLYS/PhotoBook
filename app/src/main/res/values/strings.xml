@@ -5,7 +5,12 @@
     <string name="title_gallery">Gallery</string>
     <string name="title_more">More</string>
     <string name="title_notifications">Notifications</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="text_login">Login</string>
+    <string name="hint_register">Create an account</string>
+    <string name="notify_please_wait">Please wait...</string>
+    <string name="notify_login_fail">Login fail !</string>
+    <string name="error_required">Required</string>
 </resources>

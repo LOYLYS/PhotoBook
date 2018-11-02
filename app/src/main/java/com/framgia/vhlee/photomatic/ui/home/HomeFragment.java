@@ -15,6 +15,11 @@ public class HomeFragment extends Fragment {
 
     }
 
+    public static Fragment getInstance() {
+        HomeFragment fragment = new HomeFragment();
+        return fragment;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
