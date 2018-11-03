@@ -3,6 +3,7 @@ package com.framgia.vhlee.photomatic.data.source;
 import com.framgia.vhlee.photomatic.data.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ValueEventListener;
 
 public interface DataSource {
     interface Local {
@@ -17,5 +18,7 @@ public interface DataSource {
         void register(String email, String password, OnCompleteListener listener);
 
         void updateUserData(User user, OnCompleteListener listener);
+
+        void getUserData(String userId, ValueEventListener listener);
     }
 }

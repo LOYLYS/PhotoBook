@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_grey_200"
+    android:scrollbars="none"
+    tools:context=".ui.profile.ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/view_top_profile"
+            layout="@layout/layout_top_profile" />
+
+        <include
+            android:id="@+id/view_center_profile"
+            layout="@layout/layout_center_profile" />
+
+        <include
+            android:id="@+id/view_detail_profile"
+            layout="@layout/layout_detail_profile" />
+
+        <include
+            android:id="@+id/view_bottom_profile"
+            layout="@layout/layout_bottom_profile" />
+    </LinearLayout>
+</ScrollView>

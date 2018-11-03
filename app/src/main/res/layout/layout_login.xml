@@ -19,7 +19,6 @@
         android:layout_width="@dimen/dp_280"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_50"
-        android:outlineSpotShadowColor="@color/color_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_logo">
@@ -31,7 +30,7 @@
             android:background="@color/color_grey_200"
             android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/color_primary" />
+            android:textColor="@color/color_accent" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -52,7 +51,7 @@
             android:background="@color/color_grey_200"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
-            android:textColor="@color/color_primary" />
+            android:textColor="@color/color_accent" />
 
     </android.support.design.widget.TextInputLayout>
 

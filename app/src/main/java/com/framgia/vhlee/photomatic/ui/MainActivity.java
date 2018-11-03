@@ -12,11 +12,12 @@ import android.view.MenuItem;
 
 import com.framgia.vhlee.photomatic.R;
 import com.framgia.vhlee.photomatic.ui.home.HomeFragment;
+import com.framgia.vhlee.photomatic.ui.more.MoreFragment;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
-
     private static final String HOME = "Home";
+    private static final String MORE = "More";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.navigation_notifications:
                 break;
             case R.id.navigation_more:
+                selectTab(new MoreFragment(), MORE, false);
                 break;
             default:
                 break;

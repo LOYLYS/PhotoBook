@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.framgia.vhlee.photomatic.R;
 import com.framgia.vhlee.photomatic.data.model.User;
+import com.framgia.vhlee.photomatic.ui.login.LoginActivity;
 import com.framgia.vhlee.photomatic.util.Constants;
 import com.framgia.vhlee.photomatic.util.Notifications;
 
@@ -69,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity
                 register();
                 break;
             case R.id.text_login:
-                super.onBackPressed();
+                startActivity(LoginActivity.getLoginIntent(this, mEditEmail.getText().toString()));
                 break;
             default:
                 break;

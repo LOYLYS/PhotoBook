@@ -21,4 +21,18 @@
     <string name="error_match_password">Password not match</string>
     <string name="notify_reg_success">Register successfully</string>
     <string name="login_now">LOGIN NOW</string>
+    <string name="text_sign_out">Sign out</string>
+    <string name="default_name">No name</string>
+    <string name="type_newbie">Newbie</string>
+    <string name="type_admin">Admin</string>
+    <string name="type_official">Official</string>
+    <string name="type_active">Active</string>
+    <string name="no_information">No information</string>
+    <string name="title_information">Information</string>
+    <string name="no_value">0</string>
+    <string name="text_posts">Posts</string>
+    <string name="text_subscribers">Subscribers</string>
+    <string name="text_points">Points</string>
+    <string name="text_view_your_profile">View your profile</string>
+    <string name="text_view_all_photos">View all photos</string>
 </resources>

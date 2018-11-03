@@ -5,6 +5,7 @@ import com.framgia.vhlee.photomatic.data.source.DataSource;
 import com.framgia.vhlee.photomatic.data.source.remote.RemoteDataSource;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ValueEventListener;
 
 public class DataRepository implements DataSource.Remote {
     private static DataRepository sDataRepository;
@@ -38,5 +39,10 @@ public class DataRepository implements DataSource.Remote {
     @Override
     public void updateUserData(User user, OnCompleteListener listener) {
         mRemote.updateUserData(user, listener);
+    }
+
+    @Override
+    public void getUserData(String userId, ValueEventListener listener) {
+        mRemote.getUserData(userId, listener);
     }
 }

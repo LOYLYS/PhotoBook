@@ -9,6 +9,8 @@ import java.lang.annotation.RetentionPolicy;
 
 public class User implements Parcelable {
     private static final String NO_INFO = "No information";
+    private static final String MALE = "Male";
+    private static final String FEMALE = "Female";
     private String mAvatar;
     private String mEmail;
     private String mNickName;
@@ -110,8 +112,10 @@ public class User implements Parcelable {
         mBirthday = birthday;
     }
 
-    public int getSexual() {
-        return mSexual;
+    public String getSexual() {
+        if (mSexual == 1) return MALE;
+        if (mSexual == 2) return FEMALE;
+        return NO_INFO;
     }
 
     public void setSexual(@SexualCode int sexual) {
@@ -175,7 +179,7 @@ public class User implements Parcelable {
     @IntDef({
             SexualCode.NONE, SexualCode.MALE, SexualCode.FEMALE
     })
-    @interface SexualCode {
+    public @interface SexualCode {
         int NONE = 0;
         int MALE = 1;
         int FEMALE = 2;
@@ -183,12 +187,12 @@ public class User implements Parcelable {
 
     @Retention(RetentionPolicy.SOURCE)
     @IntDef({
-            TypeCode.NEWBIE, TypeCode.OFFICAL,
+            TypeCode.NEWBIE, TypeCode.OFFICIAL,
             TypeCode.ACTIVE, TypeCode.ADMIN
     })
-    @interface TypeCode {
+    public @interface TypeCode {
         int NEWBIE = 0;
-        int OFFICAL = 1;
+        int OFFICIAL = 1;
         int ACTIVE = 2;
         int ADMIN = 3;
     }
