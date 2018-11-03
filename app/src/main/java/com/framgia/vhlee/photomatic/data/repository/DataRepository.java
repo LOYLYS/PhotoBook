@@ -1,7 +1,7 @@
 package com.framgia.vhlee.photomatic.data.repository;
 
+import com.framgia.vhlee.photomatic.data.model.User;
 import com.framgia.vhlee.photomatic.data.source.DataSource;
-import com.framgia.vhlee.photomatic.data.source.remote.FirebaseAccount;
 import com.framgia.vhlee.photomatic.data.source.remote.RemoteDataSource;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -27,6 +27,16 @@ public class DataRepository implements DataSource.Remote {
 
     @Override
     public void login(String email, String password, OnCompleteListener listener) {
-        mRemote.login(email,password, listener);
+        mRemote.login(email, password, listener);
+    }
+
+    @Override
+    public void register(String email, String password, OnCompleteListener listener) {
+        mRemote.register(email, password, listener);
+    }
+
+    @Override
+    public void updateUserData(User user, OnCompleteListener listener) {
+        mRemote.updateUserData(user, listener);
     }
 }

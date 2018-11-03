@@ -6,7 +6,7 @@
         <item name="colorAccent">@color/color_accent</item>
     </style>
 
-    <style name="TextInputSyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="TextInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/color_primary</item>
     </style>
 </resources>
