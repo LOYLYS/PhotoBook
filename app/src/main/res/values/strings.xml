@@ -13,4 +13,12 @@
     <string name="notify_please_wait">Please wait...</string>
     <string name="notify_login_fail">Login fail !</string>
     <string name="error_required">Required</string>
+    <string name="hint_user_name">Nickname</string>
+    <string name="hint_date">Date</string>
+    <string name="text_register">Register</string>
+    <string name="hint_login">Login</string>
+    <string name="hint_repeat_password">Repeat password</string>
+    <string name="error_match_password">Password not match</string>
+    <string name="notify_reg_success">Register successfully</string>
+    <string name="login_now">LOGIN NOW</string>
 </resources>

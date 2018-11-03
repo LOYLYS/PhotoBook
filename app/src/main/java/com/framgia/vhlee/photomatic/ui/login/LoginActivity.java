@@ -1,7 +1,8 @@
 package com.framgia.vhlee.photomatic.ui.login;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,10 +13,8 @@ import android.widget.Toast;
 import com.framgia.vhlee.photomatic.R;
 import com.framgia.vhlee.photomatic.ui.MainActivity;
 import com.framgia.vhlee.photomatic.ui.register.RegisterActivity;
+import com.framgia.vhlee.photomatic.util.Constants;
 import com.framgia.vhlee.photomatic.util.Notifications;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity
         implements View.OnClickListener, LoginContract.View {
@@ -46,6 +45,7 @@ public class LoginActivity extends AppCompatActivity
         mEmailField = findViewById(R.id.input_email);
         mPasswordField = findViewById(R.id.input_password);
         mViewProgress.setVisibility(View.GONE);
+        mEmailField.setText(getIntent().getStringExtra(Constants.EXTRA_EMAIL));
         buttonLogin.setOnClickListener(this);
         textRegister.setOnClickListener(this);
     }
@@ -59,6 +59,7 @@ public class LoginActivity extends AppCompatActivity
             case R.id.text_register:
                 String email = mEmailField.getText().toString();
                 startActivity(RegisterActivity.getRegisterIntent(this, email));
+                finish();
                 break;
             default:
                 break;
@@ -68,14 +69,14 @@ public class LoginActivity extends AppCompatActivity
     private void login() {
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
-        if (validFeild(email, password)) {
+        if (validField(email, password)) {
             mViewProgress.setVisibility(View.VISIBLE);
             mViewLogin.setClickable(false);
             mPresenter.login(email, password);
         }
     }
 
-    private boolean validFeild(String email, String password) {
+    private boolean validField(String email, String password) {
         if (email.isEmpty()) {
             mEmailField.setError(getString(R.string.error_required));
             return false;
@@ -98,5 +99,11 @@ public class LoginActivity extends AppCompatActivity
         mViewProgress.setVisibility(View.GONE);
         mViewLogin.setClickable(true);
         Notifications.showSnackBar(getCurrentFocus(), message);
+    }
+
+    public static Intent getLoginIntent(Context context, String email) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.putExtra(Constants.EXTRA_EMAIL, email);
+        return intent;
     }
 }
