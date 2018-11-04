@@ -5,4 +5,6 @@
     <color name="color_accent">#42a5f5</color>
     <color name="color_grey_200">#EEEEEE</color>
     <color name="black_transparent">#48000000</color>
+    <color name="color_green_a500">#4CAF50</color>
+    <color name="color_blue_a700">#2962FF</color>
 </resources>

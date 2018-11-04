@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class FirebaseAccount implements DataSource.Remote {
     private static final String TABLE_USERS = "users";
@@ -42,5 +43,11 @@ public class FirebaseAccount implements DataSource.Remote {
         mUserRef.child(currentUser.getUid())
                 .setValue(user)
                 .addOnCompleteListener(listener);
+    }
+
+    @Override
+    public void getUserData(String userId, ValueEventListener listener) {
+        DatabaseReference mUserRef = mDatabase.getReference(TABLE_USERS);
+        mUserRef.child(userId).addValueEventListener(listener);
     }
 }
