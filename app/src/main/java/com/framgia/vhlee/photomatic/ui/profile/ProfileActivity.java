@@ -105,8 +105,8 @@ public class ProfileActivity extends AppCompatActivity
         String[] keys = {"Name", "Sex", "Address",
                 "Birthday", "Join time",
                 "Email", "Description"};
-        String[] values = {user.getNickName(), user.getSexual(), user.getAddress(),
-                Time.convertTime(user.getBirthday()), Time.convertTime(user.getJoinTime()),
+        String[] values = {user.getNickName(), getSex(user.getSexual()), user.getAddress(),
+                user.getBirthday(), Time.convertTime(user.getJoinTime()),
                 user.getEmail(), user.getDescription()};
         String[] from = {"key", "value"};
         int[] to = {R.id.text_key_info, R.id.text_value_info};
@@ -145,6 +145,12 @@ public class ProfileActivity extends AppCompatActivity
                 mTextType.setBackgroundColor(Color.MAGENTA);
                 break;
         }
+    }
+
+    public String getSex(int code) {
+        if (code == 1) return getString(R.string.text_male);
+        if (code == 2) return getString(R.string.text_female);
+        return getString(R.string.text_secret);
     }
 
     @Override

@@ -9,15 +9,13 @@ import java.lang.annotation.RetentionPolicy;
 
 public class User implements Parcelable {
     private static final String NO_INFO = "No information";
-    private static final String MALE = "Male";
-    private static final String FEMALE = "Female";
     private String mAvatar;
     private String mEmail;
     private String mNickName;
     private String mDescription;
     private String mAddress;
     private long mJoinTime;
-    private long mBirthday;
+    private String mBirthday;
     private int mSexual;
     private int mPost;
     private int mSubscriber;
@@ -36,7 +34,7 @@ public class User implements Parcelable {
         mDescription = in.readString();
         mAddress = in.readString();
         mJoinTime = in.readLong();
-        mBirthday = in.readLong();
+        mBirthday = in.readString();
         mSexual = in.readInt();
         mPost = in.readInt();
         mSubscriber = in.readInt();
@@ -104,18 +102,16 @@ public class User implements Parcelable {
         mJoinTime = joinTime;
     }
 
-    public long getBirthday() {
+    public String getBirthday() {
         return mBirthday;
     }
 
-    public void setBirthday(long birthday) {
+    public void setBirthday(String birthday) {
         mBirthday = birthday;
     }
 
-    public String getSexual() {
-        if (mSexual == 1) return MALE;
-        if (mSexual == 2) return FEMALE;
-        return NO_INFO;
+    public int getSexual() {
+        return mSexual;
     }
 
     public void setSexual(@SexualCode int sexual) {
@@ -167,7 +163,7 @@ public class User implements Parcelable {
         parcel.writeString(mDescription);
         parcel.writeString(mAddress);
         parcel.writeLong(mJoinTime);
-        parcel.writeLong(mBirthday);
+        parcel.writeString(mBirthday);
         parcel.writeInt(mSexual);
         parcel.writeInt(mPost);
         parcel.writeInt(mSubscriber);

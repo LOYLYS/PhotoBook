@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraints_edit_profile"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".ui.editprofile.EditProfileActivity">
+
+    <Button
+        android:id="@+id/button_cancel_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/color_grey_200"
+        android:text="@string/text_cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progress_checking"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/button_save_edit"
+        app:layout_constraintBottom_toBottomOf="@id/button_save_edit"
+        app:layout_constraintStart_toEndOf="@id/button_cancel_edit"
+        app:layout_constraintEnd_toStartOf="@id/button_save_edit"/>
+
+    <Button
+        android:id="@+id/button_save_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_5"
+        android:layout_marginEnd="@dimen/dp_5"
+        android:background="@color/color_green_a500"
+        android:text="@string/text_save"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_avatar"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_100"
+        android:layout_marginTop="@dimen/dp_20"
+        android:src="@drawable/default_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_save_edit" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_email"
+        style="@style/TextInputStyle"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_avatar">
+
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_grey_200"
+            android:enabled="false"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            android:textColor="@android:color/darker_gray" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_description"
+        style="@style/TextInputStyle"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_email">
+
+        <EditText
+            android:id="@+id/input_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_grey_200"
+            android:hint="@string/text_description"
+            android:inputType="textLongMessage"
+            android:textColor="@color/color_primary" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_address"
+        style="@style/TextInputStyle"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_description">
+
+        <EditText
+            android:id="@+id/input_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_grey_200"
+            android:hint="@string/text_address"
+            android:inputType="text"
+            android:textColor="@color/color_primary" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Spinner
+        android:id="@+id/spinner_sex"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_sex"
+        app:layout_constraintStart_toStartOf="@id/input_layout_sex"
+        app:layout_constraintEnd_toEndOf="@id/input_layout_sex"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_sex"
+        style="@style/TextInputStyle"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintStart_toStartOf="@id/input_layout_address"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_address">
+
+        <EditText
+            android:id="@+id/input_sex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_grey_200"
+            android:focusable="false"
+            android:hint="@string/text_sex"
+            android:inputType="text"
+            android:text="@string/text_secret"
+            android:textColor="@color/color_primary" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_birthday"
+        style="@style/TextInputStyle"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintEnd_toEndOf="@id/input_layout_address"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_address">
+
+        <EditText
+            android:id="@+id/input_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_grey_200"
+            android:focusable="false"
+            android:hint="@string/text_birthday"
+            android:inputType="text"
+            android:text="@string/text_secret"
+            android:textColor="@color/color_primary" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_new_password"
+        style="@style/TextInputStyle"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_sex">
+
+        <EditText
+            android:id="@+id/input_new_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_grey_200"
+            android:hint="@string/hint_new_password"
+            android:inputType="textPassword"
+            android:textColor="@color/color_primary" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_repeat_new_password"
+        style="@style/TextInputStyle"
+        android:layout_width="@dimen/dp_280"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_layout_new_password">
+
+        <EditText
+            android:id="@+id/input_repeat_new_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_grey_200"
+            android:hint="@string/hint_repeat_new_password"
+            android:inputType="textPassword"
+            android:textColor="@color/color_primary" />
+    </android.support.design.widget.TextInputLayout>
+</android.support.constraint.ConstraintLayout>

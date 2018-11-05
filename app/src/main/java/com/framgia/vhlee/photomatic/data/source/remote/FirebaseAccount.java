@@ -3,6 +3,8 @@ package com.framgia.vhlee.photomatic.data.source.remote;
 import com.framgia.vhlee.photomatic.data.model.User;
 import com.framgia.vhlee.photomatic.data.source.DataSource;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +39,16 @@ public class FirebaseAccount implements DataSource.Remote {
     }
 
     @Override
-    public void updateUserData(User user, OnCompleteListener listener) {
+    public void reAuthenticate(String password, OnCompleteListener listener) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        AuthCredential credential =
+                EmailAuthProvider.getCredential(currentUser.getEmail(), password);
+        currentUser.reauthenticate(credential)
+                .addOnCompleteListener(listener);
+    }
+
+    @Override
+    public void updateUserData(final User user, OnCompleteListener listener) {
         DatabaseReference mUserRef = mDatabase.getReference(TABLE_USERS);
         FirebaseUser currentUser = mAuth.getCurrentUser();
         mUserRef.child(currentUser.getUid())
@@ -49,5 +60,11 @@ public class FirebaseAccount implements DataSource.Remote {
     public void getUserData(String userId, ValueEventListener listener) {
         DatabaseReference mUserRef = mDatabase.getReference(TABLE_USERS);
         mUserRef.child(userId).addValueEventListener(listener);
+    }
+
+    @Override
+    public void setPassword(String newPassword, OnCompleteListener listener) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser.updatePassword(newPassword).addOnCompleteListener(listener);
     }
 }

@@ -35,6 +35,11 @@ public class RemoteDataSource implements DataSource.Remote {
     }
 
     @Override
+    public void reAuthenticate(String password, OnCompleteListener listener) {
+        mFirebaseAccount.reAuthenticate(password, listener);
+    }
+
+    @Override
     public void updateUserData(User user, OnCompleteListener listener) {
         mFirebaseAccount.updateUserData(user, listener);
     }
@@ -42,5 +47,10 @@ public class RemoteDataSource implements DataSource.Remote {
     @Override
     public void getUserData(String userId, ValueEventListener listener) {
         mFirebaseAccount.getUserData(userId, listener);
+    }
+
+    @Override
+    public void setPassword(String newPassword, OnCompleteListener listener) {
+        mFirebaseAccount.setPassword(newPassword, listener);
     }
 }

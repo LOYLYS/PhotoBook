@@ -37,6 +37,11 @@ public class DataRepository implements DataSource.Remote {
     }
 
     @Override
+    public void reAuthenticate(String password, OnCompleteListener listener) {
+        mRemote.reAuthenticate(password, listener);
+    }
+
+    @Override
     public void updateUserData(User user, OnCompleteListener listener) {
         mRemote.updateUserData(user, listener);
     }
@@ -44,5 +49,10 @@ public class DataRepository implements DataSource.Remote {
     @Override
     public void getUserData(String userId, ValueEventListener listener) {
         mRemote.getUserData(userId, listener);
+    }
+
+    @Override
+    public void setPassword(String newPassword, OnCompleteListener listener) {
+        mRemote.setPassword(newPassword, listener);
     }
 }

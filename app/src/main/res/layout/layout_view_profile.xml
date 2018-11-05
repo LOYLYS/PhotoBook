@@ -14,7 +14,7 @@
     android:paddingBottom="@dimen/dp_10">
 
     <ImageView
-        android:id="@+id/image_avatar"
+        android:id="@+id/image_avatar_more_fragment"
         android:layout_width="@dimen/dp_48"
         android:layout_height="@dimen/dp_48"
         android:src="@drawable/default_profile"
@@ -29,15 +29,15 @@
         android:text="@string/no_information"
         android:textSize="@dimen/sp_25"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@id/image_avatar"
-        app:layout_constraintTop_toTopOf="@id/image_avatar" />
+        app:layout_constraintStart_toEndOf="@id/image_avatar_more_fragment"
+        app:layout_constraintTop_toTopOf="@id/image_avatar_more_fragment" />
 
     <TextView
         android:id="@+id/text_nick_name_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/text_view_your_profile"
-        app:layout_constraintBottom_toBottomOf="@id/image_avatar"
+        app:layout_constraintBottom_toBottomOf="@id/image_avatar_more_fragment"
         app:layout_constraintStart_toStartOf="@id/text_nick_name"
         app:layout_constraintTop_toBottomOf="@id/text_nick_name" />
 
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp_10"
         android:src="@drawable/ic_edit_grey_24dp"
-        app:layout_constraintBottom_toBottomOf="@id/image_avatar"
+        app:layout_constraintBottom_toBottomOf="@id/image_avatar_more_fragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/image_avatar" />
+        app:layout_constraintTop_toTopOf="@id/image_avatar_more_fragment" />
 </android.support.constraint.ConstraintLayout>
