@@ -35,4 +35,25 @@
     <string name="text_points">Points</string>
     <string name="text_view_your_profile">View your profile</string>
     <string name="text_view_all_photos">View all photos</string>
+    <string name="hint_new_password">New password</string>
+    <string name="hint_repeat_new_password">Repeat new password</string>
+    <string name="text_description">Description</string>
+    <string name="text_birthday">Birthday</string>
+    <string name="text_address">Address</string>
+    <string name="text_sex">Sexual</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="text_save">Save</string>
+    <string name="text_secret">Secret</string>
+    <string name="text_male">Male</string>
+    <string name="text_female">Female</string>
+    <string name="title_confirm_password_dialog">Confirm your current password</string>
+    <string name="option_yes">OK</string>
+    <string name="option_cancel">Cancel</string>
+    <string name="notify_update_success">Update profile successfully</string>
+    <string name="notify_confirm_empty">Confirm password is empty</string>
+    <string-array name="sex_array">
+        <item>Secret</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

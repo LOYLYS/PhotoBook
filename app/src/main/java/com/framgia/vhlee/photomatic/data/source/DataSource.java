@@ -17,8 +17,12 @@ public interface DataSource {
 
         void register(String email, String password, OnCompleteListener listener);
 
+        void reAuthenticate(String password, OnCompleteListener listener);
+
         void updateUserData(User user, OnCompleteListener listener);
 
         void getUserData(String userId, ValueEventListener listener);
+
+        void setPassword(String newPassword, OnCompleteListener listener);
     }
 }
