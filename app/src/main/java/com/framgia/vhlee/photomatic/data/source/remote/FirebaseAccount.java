@@ -1,7 +1,7 @@
 package com.framgia.vhlee.photomatic.data.source.remote;
 
+import com.framgia.vhlee.photomatic.data.model.Post;
 import com.framgia.vhlee.photomatic.data.model.User;
-import com.framgia.vhlee.photomatic.data.source.DataSource;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
@@ -11,8 +11,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class FirebaseAccount implements DataSource.Remote {
+public class FirebaseAccount {
     private static final String TABLE_USERS = "users";
+    private static final String TABLE_POSTS = "posts";
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
 
@@ -21,24 +22,20 @@ public class FirebaseAccount implements DataSource.Remote {
         mDatabase = FirebaseDatabase.getInstance();
     }
 
-    @Override
     public void checkSate(FirebaseAuth.AuthStateListener listener) {
         mAuth.addAuthStateListener(listener);
     }
 
-    @Override
     public void login(String email, String password, OnCompleteListener listener) {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(listener);
     }
 
-    @Override
     public void register(String email, String password, OnCompleteListener listener) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(listener);
     }
 
-    @Override
     public void reAuthenticate(String password, OnCompleteListener listener) {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         AuthCredential credential =
@@ -47,24 +44,27 @@ public class FirebaseAccount implements DataSource.Remote {
                 .addOnCompleteListener(listener);
     }
 
-    @Override
     public void updateUserData(final User user, OnCompleteListener listener) {
-        DatabaseReference mUserRef = mDatabase.getReference(TABLE_USERS);
+        DatabaseReference userRef = mDatabase.getReference(TABLE_USERS);
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        mUserRef.child(currentUser.getUid())
+        userRef.child(currentUser.getUid())
                 .setValue(user)
                 .addOnCompleteListener(listener);
     }
 
-    @Override
     public void getUserData(String userId, ValueEventListener listener) {
         DatabaseReference mUserRef = mDatabase.getReference(TABLE_USERS);
         mUserRef.child(userId).addValueEventListener(listener);
     }
 
-    @Override
     public void setPassword(String newPassword, OnCompleteListener listener) {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         currentUser.updatePassword(newPassword).addOnCompleteListener(listener);
+    }
+
+    public void savePost(Post post, OnCompleteListener listener) {
+        DatabaseReference postsRef = mDatabase.getReference(TABLE_POSTS);
+        DatabaseReference newPostRef = postsRef.push();
+        newPostRef.setValue(post).addOnCompleteListener(listener);
     }
 }

@@ -4,17 +4,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Post implements Parcelable {
-    private String mId;
     private String mCaption;
     private String mPhotoUrl;
     private String mUserId;
-    private String mCreateTime;
+    private long mCreateTime;
     private int mLikeCount;
     private int mCommentCount;
 
-    public Post(String id, String caption, String photoUrl,
-                String userId, String createTime, int likeCount, int commentCount) {
-        mId = id;
+    public Post() {
+    }
+
+    public Post(String caption, String photoUrl,
+                String userId, long createTime, int likeCount, int commentCount) {
         mCaption = caption;
         mPhotoUrl = photoUrl;
         mUserId = userId;
@@ -24,11 +25,10 @@ public class Post implements Parcelable {
     }
 
     protected Post(Parcel in) {
-        mId = in.readString();
         mCaption = in.readString();
         mPhotoUrl = in.readString();
         mUserId = in.readString();
-        mCreateTime = in.readString();
+        mCreateTime = in.readLong();
         mLikeCount = in.readInt();
         mCommentCount = in.readInt();
     }
@@ -44,14 +44,6 @@ public class Post implements Parcelable {
             return new Post[size];
         }
     };
-
-    public String getId() {
-        return mId;
-    }
-
-    public void setId(String id) {
-        mId = id;
-    }
 
     public String getCaption() {
         return mCaption;
@@ -77,11 +69,11 @@ public class Post implements Parcelable {
         mUserId = userId;
     }
 
-    public String getCreateTime() {
+    public long getCreateTime() {
         return mCreateTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(long createTime) {
         mCreateTime = createTime;
     }
 
@@ -108,11 +100,10 @@ public class Post implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(mId);
         parcel.writeString(mCaption);
         parcel.writeString(mPhotoUrl);
         parcel.writeString(mUserId);
-        parcel.writeString(mCreateTime);
+        parcel.writeLong(mCreateTime);
         parcel.writeInt(mLikeCount);
         parcel.writeInt(mCommentCount);
     }

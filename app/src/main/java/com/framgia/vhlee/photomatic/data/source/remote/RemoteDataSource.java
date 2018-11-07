@@ -1,10 +1,16 @@
 package com.framgia.vhlee.photomatic.data.source.remote;
 
+import android.net.Uri;
+
+import com.framgia.vhlee.photomatic.data.model.Post;
 import com.framgia.vhlee.photomatic.data.model.User;
 import com.framgia.vhlee.photomatic.data.source.DataSource;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.UploadTask;
 
 public class RemoteDataSource implements DataSource.Remote {
     private static RemoteDataSource sRemoteDataSource;
@@ -52,5 +58,17 @@ public class RemoteDataSource implements DataSource.Remote {
     @Override
     public void setPassword(String newPassword, OnCompleteListener listener) {
         mFirebaseAccount.setPassword(newPassword, listener);
+    }
+
+    @Override
+    public void savePost(Post post, OnCompleteListener listener) {
+        mFirebaseAccount.savePost(post, listener);
+    }
+
+    @Override
+    public void uploadPhoto(Uri uri, OnSuccessListener<UploadTask.TaskSnapshot> successListener,
+                            OnFailureListener failureListener) {
+        RemoteStorage remoteStorage = new RemoteStorage();
+        remoteStorage.uploadPhoto(uri, successListener, failureListener);
     }
 }

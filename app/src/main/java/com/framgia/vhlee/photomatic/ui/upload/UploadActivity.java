@@ -186,9 +186,10 @@ public class UploadActivity extends AppCompatActivity
     @Override
     public void onSuccess(List<String> paths) {
         mGridPhotoAdapter.addPhotos(paths);
+        mPhotoSource = mGridPhotoAdapter.getPhotoSource(0);
         mIsCenterCrop = true;
         Glide.with(this)
-                .load(mGridPhotoAdapter.getPhotoSource(0))
+                .load(mPhotoSource)
                 .into(mImageSelected);
     }
 
