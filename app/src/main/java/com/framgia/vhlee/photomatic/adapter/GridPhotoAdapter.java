@@ -46,6 +46,14 @@ public class GridPhotoAdapter extends RecyclerView.Adapter<GridPhotoAdapter.View
         notifyItemInserted(mPhotoUrls.size() - 1);
     }
 
+    public void addPhotos(List<String> list) {
+        mPhotoUrls.clear();
+        if (!list.isEmpty()) {
+            mPhotoUrls.addAll(list);
+        }
+        notifyDataSetChanged();
+    }
+
     public void setPhotoClickListener(PhotoClickListener photoClickListener) {
         mPhotoClickListener = photoClickListener;
     }
