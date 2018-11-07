@@ -51,6 +51,7 @@
     <string name="option_cancel">Cancel</string>
     <string name="notify_update_success">Update profile successfully</string>
     <string name="notify_confirm_empty">Confirm password is empty</string>
+    <string name="title_photo">Photo</string>
     <string-array name="sex_array">
         <item>Secret</item>
         <item>Male</item>

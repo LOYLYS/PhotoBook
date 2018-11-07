@@ -2,18 +2,21 @@ package com.framgia.vhlee.photomatic.data.repository;
 
 import com.framgia.vhlee.photomatic.data.model.User;
 import com.framgia.vhlee.photomatic.data.source.DataSource;
+import com.framgia.vhlee.photomatic.data.source.local.LocalCallback;
+import com.framgia.vhlee.photomatic.data.source.local.LocalDataSource;
 import com.framgia.vhlee.photomatic.data.source.remote.RemoteDataSource;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ValueEventListener;
 
-public class DataRepository implements DataSource.Remote {
+public class DataRepository implements DataSource.Remote, DataSource.Local {
     private static DataRepository sDataRepository;
     private DataSource.Remote mRemote;
     private DataSource.Local mLocal;
 
     public DataRepository() {
         mRemote = RemoteDataSource.newInstance();
+        mLocal = LocalDataSource.newInstance();
     }
 
     public static DataRepository newInstance() {
@@ -54,5 +57,10 @@ public class DataRepository implements DataSource.Remote {
     @Override
     public void setPassword(String newPassword, OnCompleteListener listener) {
         mRemote.setPassword(newPassword, listener);
+    }
+
+    @Override
+    public void getLocalPhotos(String path, LocalCallback<String> callback) {
+        mLocal.getLocalPhotos(path, callback);
     }
 }

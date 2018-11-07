@@ -3,6 +3,12 @@
     package="com.framgia.vhlee.photomatic">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-feature
+        android:name="android.hardware.Camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +27,9 @@
         </activity>
         <activity android:name=".ui.register.RegisterActivity" />
         <activity android:name=".ui.profile.ProfileActivity" />
-        <activity android:name=".ui.editprofile.EditProfileActivity"></activity>
+        <activity android:name=".ui.editprofile.EditProfileActivity" />
+        <activity android:name=".ui.upload.UploadActivity" />
+        <activity android:name=".ui.post.PostActivity"></activity>
     </application>
 
 </manifest>
