@@ -13,11 +13,14 @@ import android.view.MenuItem;
 import com.framgia.vhlee.photomatic.R;
 import com.framgia.vhlee.photomatic.ui.home.HomeFragment;
 import com.framgia.vhlee.photomatic.ui.more.MoreFragment;
+import com.framgia.vhlee.photomatic.ui.upload.UploadActivity;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String HOME = "Home";
     private static final String MORE = "More";
+    private static final String GALLERY = "Gallery";
+    private BottomNavigationView mBottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +30,15 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initUI() {
-        BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
-        bottomNavigation.setOnNavigationItemSelectedListener(this);
+        mBottomNavigation = findViewById(R.id.bottom_navigation);
+        mBottomNavigation.setOnNavigationItemSelectedListener(this);
         selectTab(new HomeFragment(), HOME, false);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mBottomNavigation.getMenu().getItem(0).setChecked(true);
     }
 
     @Override
@@ -41,6 +50,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.navigation_rank:
                 break;
             case R.id.navigation_gallery:
+                startActivity(UploadActivity.getShareIntent(this));
                 break;
             case R.id.navigation_notifications:
                 break;
